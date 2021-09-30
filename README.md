@@ -18,11 +18,16 @@ Presented at OCD Splunk Pub #3 on 2021-10-08.
 
 ## Lab instructions
 ### microk8s
-- Install microk8s
-- Enable features
-- Create namespace
+1. Follow official [install instructions](https://microk8s.io)
+2. Enable storage feature:
+	`microk8s enable storage`
+3. Create a namespace for this lab:
+	`microk8s kubectl create namespace splunkpub`
 
 ### splunk-operator
-- Install splunk-operator in namespace
-- Deploy `Standalone` instance and service
-- Change Splunk configuration
+1. Install splunk-operator in the splunkpub namespace:
+	`microk8s kubectl --namespace splunkpub apply -f https://github.com/splunk/splunk-operator/releases/download/1.0.2/splunk-operator-install.yaml`
+2. Deploy `Standalone` instance and service:
+	`microk8s kubectl --namespace splunkpub apply -f kubernetes/standalone-v1.yml`
+3. Change Splunk configuration:
+	`microk8s kubectl --namespace splunkpub apply -f kubernetes/standalone-v2.yml`
