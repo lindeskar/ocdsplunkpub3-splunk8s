@@ -18,11 +18,11 @@ Presented at OCD Splunk Pub #3 on 2021-10-08.
 
 ## Lab instructions
 ### microk8s
-Install microk8s
-Enable features
-Create namespace
+- Install microk8s
+- Enable features
+- Create namespace
 
 ### splunk-operator
-Install splunk-operator in namespace
-Deploy `Standalone` instance and service
-Change Splunk configuration
+- Install splunk-operator in namespace
+- Deploy `Standalone` instance and service
+- Change Splunk configuration
