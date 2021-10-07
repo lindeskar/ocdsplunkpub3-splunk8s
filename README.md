@@ -17,6 +17,8 @@ Presented at OCD Splunk Pub #3 on 2021-10-08.
 - [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet)
 
 ## Lab instructions
+Instructions tested on Ubuntu 20.04 with microk8s installed using `snap`.
+
 ### microk8s
 1. Follow official [install instructions](https://microk8s.io) for microk8s
 2. Enable features:
@@ -40,7 +42,7 @@ Pause to view outputs of `kubectl get`, check `kubectl logs`, and monitor the st
 	`kubectl apply -f kubernetes/service.yml`
 
 3. Get Splunk password from secret:
-	`kubectl get secret splunk-s1-standalone-secret-v1 -o json | jq '.data | map_values(@base64d)'`
+	`kubectl get secret splunk-s1-standalone-secret-v1 --template={{.data.password}} | base64 -d`
 
 4. Reconfigure the `Standalone` instance and deploy an app to it:
 	`kubectl apply -f kubernetes/standalone-v2.yml`
