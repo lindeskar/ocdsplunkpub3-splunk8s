@@ -1,0 +1,16 @@
+---
+apiVersion: enterprise.splunk.com/v2
+kind: Standalone
+metadata:
+  name: s1
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  defaults: |-
+    splunk:
+      disable_popups: true
+      http_enableSSL: true
+      apps_location:
+        - "https://github.com/lindeskar/ocdsplunkpub3-splunk8s/raw/main/files/myapp.spl"
+  clusterMasterRef:
+    name: cm1

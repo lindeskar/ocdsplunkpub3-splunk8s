@@ -1,0 +1,25 @@
+---
+apiVersion: enterprise.splunk.com/v2
+kind: ClusterMaster
+metadata:
+  name: cm1
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  defaults: |-
+    splunk:
+      idxc:
+        search_factor: 2
+        replication_factor: 2
+
+---
+apiVersion: enterprise.splunk.com/v2
+kind: IndexerCluster
+metadata:
+  name: idxc1
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  replicas: 2
+  clusterMasterRef:
+    name: cm1
