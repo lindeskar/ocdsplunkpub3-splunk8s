@@ -50,6 +50,9 @@ Pause to view outputs of `kubectl get`, check `kubectl logs`, and monitor the st
 	kubectl apply -f kubernetes/standalone-v1.yml
 	kubectl apply -f kubernetes/service.yml
 	```
+	The service manifest will map the Splunk web and REST ports like this:
+	- Standalone: 30800 to web, 30890 to REST
+	- Monitoring Console: 30801 to web, 30891 to REST
 
 3. Get Splunk password from secret:
 	```
